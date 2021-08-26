@@ -10,17 +10,17 @@
     "reporter"
   ],
   "author": {
-    "name": "Milutin Savovic",
-    "email": "mickosavovic@gmail.com"
+    "name": "Matt Charlton",
+    "email": "m.n.charlton@gmail.com"
   },
   "license": "MIT",
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vivify-Ideas/cypress-testrail-reporter.git"
+    "url": "https://github.com/mncharlton/cypress-testrail-reporter"
   },
   "bugs": {
-    "url": "https://github.com/Vivify-Ideas/cypress-testrail-reporter/issues"
+    "url": "https://github.com/mncharlton/cypress-testrail-reporter/issues"
   },
   "scripts": {
     "tsc": "tsc",
