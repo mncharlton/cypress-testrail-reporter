@@ -158,7 +158,6 @@ var CypressTestRailReporter = /** @class */ (function (_super) {
      * Note: Uploading of screenshot is configurable option
      */
     CypressTestRailReporter.prototype.submitResults = function (status, test, comment) {
-        var _a;
         var _this = this;
         var caseIds = shared_1.titleToCaseIds(test.title);
         var invalidCaseIds = caseIds.filter(function (caseId) { return !_this.serverTestCaseIds.includes(caseId); });
@@ -167,21 +166,12 @@ var CypressTestRailReporter = /** @class */ (function (_super) {
             TestRailLogger.log("The following test IDs were found in Cypress tests, but not found in Testrail: " + invalidCaseIds);
         if (caseIds.length) {
             var caseResults = caseIds.map(function (caseId) {
-                return {
+                _this.testRailApi.publishResult({
                     case_id: caseId,
                     status_id: status,
-                    comment: comment,
-                };
-            });
-            (_a = this.results).push.apply(_a, caseResults);
-            var publishedResults = this.testRailApi.publishResults(caseResults);
-            if (publishedResults !== undefined &&
-                this.reporterOptions.allowFailedScreenshotUpload === true &&
-                (status === testrail_interface_1.Status.Failed || status === testrail_interface_1.Status.Retest)) {
-                publishedResults.forEach(function (result) {
-                    _this.testRailApi.uploadScreenshots(caseIds[0], result.id);
+                    comment: "Execution time: " + test.duration + "ms",
                 });
-            }
+            });
         }
     };
     return CypressTestRailReporter;

@@ -162,23 +162,12 @@ export class CypressTestRailReporter extends reporters.Spec {
 
     if (caseIds.length) {
       const caseResults = caseIds.map(caseId => {
-        return {
+        this.testRailApi.publishResult({
           case_id: caseId,
           status_id: status,
-          comment: comment,
-        };
-      });
-      this.results.push(...caseResults);
-      const publishedResults = this.testRailApi.publishResults(caseResults)
-      if (
-        publishedResults !== undefined &&
-        this.reporterOptions.allowFailedScreenshotUpload === true &&
-        (status === Status.Failed || status === Status.Retest)
-      ) {
-        publishedResults.forEach((result) => {
-          this.testRailApi.uploadScreenshots(caseIds[0], result.id);
+          comment: `Execution time: ${test.duration}ms`,
         })
-      }
+      });
     }
   }
 }
