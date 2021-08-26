@@ -1,5 +1,5 @@
 {
-  "name": "cypress-testrail-reporter",
+  "name": "@mncharlton/cypress-testrail-reporter",
   "version": "1.3.2",
   "description": "A Testrail reporter for cypress including TestRail API basic library",
   "main": "index.js",
@@ -9,15 +9,11 @@
     "testrail",
     "reporter"
   ],
-  "author": {
-    "name": "Matt Charlton",
-    "email": "m.n.charlton@gmail.com"
-  },
+  "author": "Matt Charlton <m.n.charlton@gmail.com>",
   "license": "MIT",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mncharlton/cypress-testrail-reporter"
+    "url": "git+https://github.com/mncharlton/cypress-testrail-reporter.git"
   },
   "bugs": {
     "url": "https://github.com/mncharlton/cypress-testrail-reporter/issues"
@@ -43,5 +39,6 @@
     "chai": "^3.5.0",
     "rimraf": "^2.7.1",
     "typescript": "^4.2.4"
-  }
+  },
+  "homepage": "https://github.com/mncharlton/cypress-testrail-reporter#readme"
 }
