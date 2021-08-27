@@ -140,13 +140,8 @@ var CypressTestRailReporter = /** @class */ (function (_super) {
                 /**
                  * Notify about the results at the end of execution
                  */
-                if (_this.results.length == 0) {
-                    TestRailLogger.warn('No testcases were matched with TestRail. Ensure that your tests are declared correctly and titles contain matches to format of Cxxxx');
-                }
-                else {
-                    var path = "runs/view/" + _this.runId;
-                    TestRailLogger.log("Results are published to " + chalk.magenta(_this.reporterOptions.host + "/index.php?/" + path));
-                }
+                var path = "runs/view/" + _this.runId;
+                TestRailLogger.log("Results are published to " + chalk.magenta(_this.reporterOptions.host + "/index.php?/" + path));
             });
         }
         return _this;
@@ -160,10 +155,6 @@ var CypressTestRailReporter = /** @class */ (function (_super) {
     CypressTestRailReporter.prototype.submitResults = function (status, test, comment) {
         var _this = this;
         var caseIds = shared_1.titleToCaseIds(test.title);
-        var invalidCaseIds = caseIds.filter(function (caseId) { return !_this.serverTestCaseIds.includes(caseId); });
-        caseIds = caseIds.filter(function (caseId) { return _this.serverTestCaseIds.includes(caseId); });
-        if (invalidCaseIds.length > 0)
-            TestRailLogger.log("The following test IDs were found in Cypress tests, but not found in Testrail: " + invalidCaseIds);
         if (caseIds.length) {
             var caseResults = caseIds.map(function (caseId) {
                 _this.testRailApi.publishResult({
